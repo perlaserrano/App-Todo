@@ -5,15 +5,19 @@ import { useState } from "react"
 
 function App() {
  const [tasks,setTasks] = useState([])
-const [addedTasks,setAddedTasks] = useState({})
+ const [task, setTask] = useState({
+  taskValue: "",
+  date: "",
+  comment: ""
+}); 
 
   return (
     <>
     <div className="container">
       <Header/>
       <div className="mt-12 flex justify-center">
-     <Form tasks={tasks} setTasks={setTasks} addedTasks={addedTasks} setAddedTasks={setAddedTasks}/>
-     <ListTask setAddedTasks={setAddedTasks} tasks={tasks}/>
+     <Form tasks={tasks} setTasks={setTasks} task={task} setTask={setTask}/>
+     <ListTask setTask={setTask} tasks={tasks} />
       </div>
 
     </div>
