@@ -8,8 +8,21 @@ function App() {
  const [task, setTask] = useState({
   taskValue: "",
   date: "",
-  comment: ""
+  comment: "",
+  id:"",
 }); 
+
+
+const deleteTask = (id) => {
+  const index = tasks.findIndex(task => task.id === id);
+  if (index !== -1) {
+    const updatedTasks = [...tasks];
+    updatedTasks.splice(index, 1);
+    setTasks(updatedTasks); 
+  }
+}
+
+
 
   return (
     <>
@@ -17,7 +30,7 @@ function App() {
       <Header/>
       <div className="mt-12 flex justify-center">
      <Form tasks={tasks} setTasks={setTasks} task={task} setTask={setTask}/>
-     <ListTask setTask={setTask} tasks={tasks} />
+     <ListTask setTask={setTask} tasks={tasks} deleteTask={deleteTask}/>
       </div>
 
     </div>

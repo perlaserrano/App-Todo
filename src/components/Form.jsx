@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+
 
 const saveId = () => {
   const random = Math.random().toString(36).substring(2);
@@ -11,15 +11,18 @@ function Form({ tasks, setTasks, task, setTask }) {
     e.preventDefault();
 
     if (task.id) {
+      task.id = task.id
       const taskUpdate = task.map((taskState) => (taskState.id === task.id ? task : taskState));
       setTasks(taskUpdate);
+      setTask({})
     } else {
       setTasks([...tasks, { ...task, id: saveId() }]);
     }
     setTask({
         taskValue: "",
         date: "",
-        comment: ""
+        comment: "",
+        id: "",
     });
   };
 
@@ -72,9 +75,7 @@ function Form({ tasks, setTasks, task, setTask }) {
             />
           </div>
 
-          <button type="submit" className=" bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-700 cursor-pointer transition-colors">
-            Send
-          </button>
+          <input value={task.id ? 'Edit Task' : 'Send'} type="submit" className=" bg-indigo-600 w-full p-3 text-white uppercase font-bold hover:bg-indigo-700 cursor-pointer transition-colors"></input>
         </form>
       </div>
     </>

@@ -1,7 +1,15 @@
 
 
-const Task = ({task,setTask}) =>{
+const Task = ({task,setTask,deleteTask}) =>{
     const {taskValue,date,comment, id} = task
+
+    const handleDelete = () => {
+        const answer = confirm('Do you want to delete this patient?')
+        if (answer) {
+            deleteTask(id)
+            
+        }
+    }
 
    
     return(
@@ -29,7 +37,7 @@ const Task = ({task,setTask}) =>{
 
     <div className="flex justify-between mt-10">
         <button onClick={() => setTask(task)} className="py-2 px-10 bg-indigo-600 hover:bg-indigo-700 text-white font-bold uppercase rounded-lg" type="button">Edit</button>
-        <button className="py-2 px-10 bg-red-600 hover:bg-red-700 text-white font-bold uppercase rounded-lg" type="button">Delete</button>
+        <button onClick={handleDelete} className="py-2 px-10 bg-red-600 hover:bg-red-700 text-white font-bold uppercase rounded-lg" type="button">Delete</button>
     </div>
 </div>
         
